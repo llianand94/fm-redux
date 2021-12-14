@@ -1,18 +1,20 @@
 import { connect } from "react-redux";
+import * as Actions from './actions';
 
 
 
 function App(props) {
-  const {count, dispatch} = props;
-  const increment = () =>{      
-      dispatch({type:'INCREMENT'});    
-  }
-  const decrement = () =>{      
-    dispatch({type:'DECREMENT'});    
-}
+  const {count, step, dispatch} = props;
+  const increment = () =>dispatch(Actions.increment());    
+  
+  const decrement = () =>dispatch(Actions.decrement());    
+
+const setStep = ({target:{value}}) =>dispatch(Actions.setStep(Number(value)))
+
   return (
     <div>
       <h2>Count:{count}</h2>
+      <input type="number" value={step} onChange={setStep}/>
       <button onClick={increment}>+</button>
       <button onClick={decrement}>-</button>
     </div>
