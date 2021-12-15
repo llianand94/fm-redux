@@ -9,13 +9,19 @@ function reducer (prevState=initialState, action){
   const {newStep} = action;
   switch (action.type) {
     case ACTION_TYPES.INCREMENT:
-      return {...prevState, count:count+step}
+      return {
+        ...prevState,
+         count:count+step}
       
     case ACTION_TYPES.DECREMENT:
-        return {...prevState, count:count-step}
+        return {
+          ...prevState,
+           count:count-step}
     
     case ACTION_TYPES.SET_STEP:{
-      return {...prevState, step:newStep}
+      return {
+        ...prevState,
+         step:newStep}
     }
     default:
       return prevState;
