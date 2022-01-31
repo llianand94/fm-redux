@@ -10,5 +10,5 @@ const Todo = () => {
     </div>
   );
 }
-const mapStateToProp = {}
+
 export default Todo;

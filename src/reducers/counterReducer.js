@@ -11,17 +11,17 @@ function counterReducer (prevState=initialState, action){
     case ACTION_TYPES.INCREMENT:
       return {
         ...prevState,
-         count:count+step}
+        count:count+step}
       
     case ACTION_TYPES.DECREMENT:
-        return {
-          ...prevState,
-           count:count-step}
+      return {
+        ...prevState,
+        count:count-step}
     
     case ACTION_TYPES.SET_STEP:{
       return {
         ...prevState,
-         step:newStep}
+        step:newStep}
     }
     default:
       return prevState;

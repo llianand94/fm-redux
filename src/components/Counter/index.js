@@ -4,11 +4,7 @@ import * as Actions from './../../actions/counterCreators';
 
 function Counter(props) {
   const {count, step, incrementAction, decrementAction, setStepAction} = props;
-//   const increment = () =>dispatch(Actions.increment());
-//   const decrement = () =>dispatch(Actions.decrement());    
-
-const setStep = ({target:{value}}) =>setStepAction(Number(value))
-
+  const setStep = ({target:{value}}) =>setStepAction(Number(value))
   return (
     <div>
       <h2>Count:{count}</h2>
@@ -25,10 +21,8 @@ const  mapStateToProps= (counter)=> counter;
 const mapDispatchToProps = (dispatch) =>({
   incrementAction: ()=>dispatch(Actions.increment()),
   decrementAction: ()=>dispatch(Actions.decrement()),
-  setStepAction:(newStep)=>dispatch(Actions.setStep(newStep))
+  setStepAction: (newStep)=>dispatch(Actions.setStep(newStep))
 })
 
-// const withProps = connect(mapStateToProps);
-// const ComponentWithProps = withProps(App);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

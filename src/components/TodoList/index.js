@@ -4,10 +4,6 @@ import { deleteTask, updateTask } from '../../actions/todoCreators';
 
 const TodoList = (props) => {
   const {tasks,updateTaskAction,deleteTaskAction} = props;
- 
- 
-  
-  
   return (
     <section>
       <h2>To-do list</h2>
@@ -25,7 +21,7 @@ const TodoList = (props) => {
 
 const mapStateToProp= ({todo})=>todo;
 const mapDispatchToProp = (dispatch) =>({
-  updateTaskAction:({id,values})=>dispatch(updateTask({id,values})),
+  updateTaskAction: ({id,values})=>dispatch(updateTask({id,values})),
   deleteTaskAction: (id)=>dispatch(deleteTask(id))
 })
 
