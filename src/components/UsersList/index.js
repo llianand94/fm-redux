@@ -17,6 +17,7 @@ const UsersList = (props) => {
           <li key={user.id}>{user.email}</li>
         ))} 
       </ul>
+      <button onClick={()=>{getUsersReq({offset:users.length})}}>Open more users</button>
     </section>
   );
 }
