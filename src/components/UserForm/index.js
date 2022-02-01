@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from 'formik';
 import { connect } from 'react-redux';
 import React from 'react';
-import * as CreateUserActions from '../../actions/createUsers';
+import * as UserActions from '../../actions/createUsers';
 
 const initialValues = {
   firstName:'',
@@ -38,7 +38,7 @@ const UserForm = (props) => {
 }
 
 const mapDispatchToProps = (dispatch) =>({
-  createUserReqAction : (values)=> dispatch(CreateUserActions.createUserRequest(values))
+  createUserReqAction : (values)=> dispatch(UserActions.createUserRequest(values))
 })
 
 export default connect(undefined,mapDispatchToProps)(UserForm);

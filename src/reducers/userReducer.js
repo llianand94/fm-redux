@@ -7,20 +7,45 @@ const initialState = {
 }
 
 function userReducer(state= initialState, action){
-  // const 
-  switch (action.type) {
-    case ACTION_TYPES.CREATE_USER_REQUEST:{
+  switch (action.type) {  
+    case ACTION_TYPES.GET_USERS_REQUEST:{
       return {
         ...state,
-        isFetching:true
+        isFetching:true,
+        error:null
       }
     }
-    case ACTION_TYPES.CREATE_USER_SUCCESS:{
-      const {user} = action.values;
+    case ACTION_TYPES.GET_USERS_SUCCESS:{
+      const {payload:{users:newUsers}} =  action;
+      return {
+        ...state,
+        users: [...state.users, ...newUsers],
+        isFetching:false,
+        error:null
+      }
+    }
+    case ACTION_TYPES.GET_USERS_ERROR:{
+      const {payload:{error}} = action
       return {
         ...state,
         isFetching:false,
-        users : [...state.users, user]
+        error
+      }
+    }
+    case ACTION_TYPES.CREATE_USER_REQUEST:{
+      return {
+        ...state,
+        isFetching:true,
+        error:null
+      }
+    }
+    case ACTION_TYPES.CREATE_USER_SUCCESS:{
+      const {values:user} = action;
+      return {
+        ...state,
+        isFetching:false,
+        users : [...state.users, user],
+        error:null
       }
     }
     case ACTION_TYPES.CREATE_USER_ERROR:{

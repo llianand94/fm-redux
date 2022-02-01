@@ -1,6 +1,7 @@
-import Counter from "./components/Counter";
-import Todo from "./components/Todo";
+// import Counter from "./components/Counter";
+// import Todo from "./components/Todo";
 import UserForm from "./components/UserForm";
+import UsersList from "./components/UsersList";
 
 
 function App() {
@@ -9,9 +10,13 @@ function App() {
     <>
       <UserForm/>
       <hr/>
-      <Counter/>
+      <UsersList/>
       <hr/>
-      <Todo/>
+      {/* <Counter/>
+      <hr/>
+      <Todo/> */}
+      
+      
     </>
   );
 }
