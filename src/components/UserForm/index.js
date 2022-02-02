@@ -17,7 +17,7 @@ const initialValues = {
 const UserForm = (props) => {
   const {createUserReqAction} = props;
   const onSubmit = (values, formikBag) =>{
-    createUserReqAction(values);
+    createUserReqAction({values});
     formikBag.resetForm();
   }
   return (
@@ -38,7 +38,7 @@ const UserForm = (props) => {
 }
 
 const mapDispatchToProps = (dispatch) =>({
-  createUserReqAction : (values)=> dispatch(UserActions.createUserRequest(values))
+  createUserReqAction : ({values})=> dispatch(UserActions.createUserRequest({values}))
 })
 
 export default connect(undefined,mapDispatchToProps)(UserForm);

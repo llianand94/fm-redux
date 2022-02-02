@@ -1,24 +1,28 @@
 import React, { useEffect } from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as UserActions from '../../actions/createUsers';
 
 const UsersList = (props) => {
-  const {users, isFetching,error} = useSelector(({users})=> users);
-  const dispatch = useDispatch();
-  const getUsersReq = ({limit,offset}={})=>dispatch(UserActions.getUsersRequest({limit,offset}));
+  const {users, isFetching,error} = useSelector(({users})=> users);  
+  const {getUsersRequest, clearUserError} = bindActionCreators(UserActions, useDispatch());
+  const loadMore = ({limit,offset}={})=>getUsersRequest({limit, offset:users.length});
 
-  useEffect(() => { getUsersReq() },[]);
+  useEffect(() => { loadMore() },[]);
   return (
     <section>
       <h2>Users list</h2>
       {isFetching && 'Loading ...'}
-      {error && JSON.stringify(error)}
+      {error && <div>
+      <p>{error.message}</p>
+      <button onClick={clearUserError}>Clear Errors</button>
+      </div>}
       <ul> 
         { users.map((user)=>(          
           <li key={user.id}>{user.email}</li>
         ))} 
       </ul>
-      <button onClick={()=>{getUsersReq({offset:users.length})}}>Open more users</button>
+      <button onClick={loadMore}>Open more users</button>
     </section>
   );
 }
